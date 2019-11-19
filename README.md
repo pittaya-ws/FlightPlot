@@ -1,18 +1,14 @@
 FlightPlot
 ==========
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/DrTon/FlightPlot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Build Status](https://travis-ci.org/PX4/FlightPlot.svg?branch=master)](https://travis-ci.org/PX4/FlightPlot)
 
 Universal flight log plotter
 
-Docs and releases can be found on [pixhawk.org/dev/flightplot](http://pixhawk.org/dev/flightplot).
+Releases can be found on [GitHub releases](https://github.com/PX4/FlightPlot/releases).
 
-Development
------------
-
-IntelliJ IDEA IDE was used to develop FlightPlot, project files already exist in repo.
+Overview
+--------
 
 ### Supported formats:
  - PX4 log (.px4log, .bin)
@@ -24,7 +20,6 @@ IntelliJ IDEA IDE was used to develop FlightPlot, project files already exist in
  - Track export in KML and GPS format
  - Saving plot as image
 
-Binaries for Linux, Mac OS, Windows can be found on the [project homepage](https://github.com/PX4/FlightPlot/releases).
 
 Building from source
 --------------------
@@ -55,4 +50,3 @@ Run:
 ```
 java -jar out/production/flightplot.jar
 ```
-
