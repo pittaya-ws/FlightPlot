@@ -55,10 +55,12 @@ public class EulerFromQuaternion extends PlotProcessor {
             }
             q[i] = v.doubleValue();
         }
-        double[] euler = RotationConversion.eulerAnglesByQuaternion(q);
-        double[] euler2 = RotationConversion.eulerAnglesByQuaternionRotate(q);
+        double[] euler;
         if (param_Rotate) {
-            euler = euler2;
+            euler = RotationConversion.eulerAnglesByQuaternionRotate(q);
+        }
+        else {
+            euler = RotationConversion.eulerAnglesByQuaternion(q);
         }
         
         int plot_idx = 0;
