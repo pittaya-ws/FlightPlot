@@ -10,6 +10,7 @@ import java.util.Map;
  */
 public class EulerFromQuaternion extends PlotProcessor {
     private String[] param_Fields;
+    private boolean param_Rotate;
     private double param_Scale;
     private boolean[] show;
     private double[] q;
@@ -18,6 +19,7 @@ public class EulerFromQuaternion extends PlotProcessor {
     public Map<String, Object> getDefaultParameters() {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("Fields", "vehicle_attitude_0.q[0] vehicle_attitude_0.q[1] vehicle_attitude_0.q[2] vehicle_attitude_0.q[3]");
+        params.put("Rotate", false);
         params.put("Show", "RPY");
         params.put("Scale", 1.0);
         return params;
@@ -27,6 +29,7 @@ public class EulerFromQuaternion extends PlotProcessor {
     public void init() {
         q = new double[4];
         param_Fields = ((String) parameters.get("Fields")).split(WHITESPACE_RE);
+        param_Rotate = ((Boolean) parameters.get("Rotate"));
         param_Scale = (Double) parameters.get("Scale");
         String showStr = ((String) parameters.get("Show")).toUpperCase();
         show = new boolean[]{false, false, false};
@@ -53,6 +56,11 @@ public class EulerFromQuaternion extends PlotProcessor {
             q[i] = v.doubleValue();
         }
         double[] euler = RotationConversion.eulerAnglesByQuaternion(q);
+        double[] euler2 = RotationConversion.eulerAnglesByQuaternionRotate(q);
+        if (param_Rotate) {
+            euler = euler2;
+        }
+        
         int plot_idx = 0;
         for (int axis = 0; axis < 3; axis++) {
             if (show[axis]) {
